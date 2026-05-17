@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俊逸 & 筑君 | Our Wedding Day</title>
+    <!-- 引入美學字體 -->
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Great+Vibes&family=Dancing+Script&family=Pinyon+Script&family=Parisienne&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b2967d;
+            --soft-white: #fdfaf7;
+            --dark-text: #4a4a4a;
+            --border-color: #eaddd3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: var(--soft-white);
+            color: var(--dark-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 滾動動畫 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 第一頁：首屏 */
+        .top-text {
+ text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    position: absolute;       /* 絕對定位 */
+    top: 3px;                /* 距離頂端 50px，數字越大越往下移 */
+    width: 100%;              /* 寬度撐滿，為了讓文字能居中 */
+    text-align: center;       /* 文字置中 */
+    
+    /* 字體外觀設定 */
+    color: #d4af37;           /* 設定為金色 (若要白色請改為 #ffffff) */
+    font-family: 'Great Vibes', serif; /* 使用優雅的英文字體 */
+    font-size: 2.0rem;        /* 字體大小 */
+    letter-spacing: 4px;      /* 文字間距，看起來更有質感 */
+    font-style: italic;       /* 斜體 */
+    z-index: 10;              /* 確保文字在照片與遮罩上方 */
+}
+	
+	.hero {
+background-color: rgba(0, 0, 0, 0.4);
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center 20%; 
+            z-index: -2;
+opacity: 0.9;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+                        z-index: -1;
+        }
+        .hero-content h2 {
+ margin-top: 300px;
+            font-size: 2.2rem;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .hero-content h1 {
+            font-family: 'Sacramento', serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* 文案故事 */
+        .section-story {
+            padding: 100px 30px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .eng-tag {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* 倒數計時器樣式 */
+        .countdown-container {
+            padding: 60px 20px;
+            text-align: center;
+            background: white;
+            margin: 40px 0;
+        }
+        .countdown-title {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .time-box {
+            min-width: 70px;
+        }
+        .time-num {
+            display: block;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .time-label {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        /* 相簿網格 */
+        .gallery {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+
+        }
+        .full-width { grid-column: span 2; height: 600px; }
+
+        /* 資訊區美化 */
+        .info-card {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 50px;
+            background: white;
+            border: 15px solid var(--border-color);
+            position: relative;
+            text-align: left; /* 文字靠左 */
+        }
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 5px solid var(--border-color);
+            pointer-events: none;
+        }
+        .info-header {
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        .info-item { margin-bottom: 25px; }
+        .info-item strong { font-size: 1.2rem; color: #333; display: block; margin-bottom: 5px; }
+        .map-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        /* 結尾 RSVP */
+        .rsvp-section {
+            padding: 120px 20px;
+            text-align: center;
+            background: white;
+        }
+        .rsvp-title { font-size: 2rem; color: var(--gold); margin-bottom: 40px; }
+        .btn-rsvp {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 18px 60px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(178,150,125,0.3);
+            transition: 0.4s;
+            margin-bottom: 25px;
+        }
+        .btn-rsvp:hover { transform: translateY(-5px); }
+        .quote-eng {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .info-card { margin: 40px 20px; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 首頁 (Hero) -->
+    <header class="hero">
+        <img src="https://i.ibb.co/d0rc0CsX/TOM-9534.jpg" class="hero-img" alt="俊逸 & 筑君">
+    
+        <div class="hero-overlay"></div>
+ <div class="top-text">Decade of Devotion</div>
+        <div class="hero-content">
+            <h2>俊逸 & 筑君</h2>
+            <h1>Our Wedding Day</h1>
+            <p style="letter-spacing: 10px;">2026.12.12</p>
+<p style="letter-spacing: 5px;">誠摯歡迎您的出席</p>
+        </div>
+    </header>
+
+    <!-- 2. 故事段落 -->
+    <section class="section-story reveal">
+        <span class="eng-tag">A Decade of Love</span>
+        <p>從青澀到成熟，十年的光景，<br>我們終於要攜手步入人生的下一階段。<br>誠摯邀請您，見證我們的幸福時刻。</p>
+    </section>
+
+    <!-- 3. 前三張照片 -->
+    <section class="gallery">
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/wNn7vKWK/TOM-9537.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/DHC4FzfS/TOM-9547.jpg"></div>
+        <div class="gallery-item full-width reveal"><img src="https://i.ibb.co/rRVY6bcS/TOM-9554.jpg"></div>
+    </section>
+
+    <!-- 4. 倒數計時器 (位於第4張照片上方) -->
+    <section class="countdown-container reveal">
+        <p class="countdown-title">距離婚禮當天倒數計時<br>DISTANCE TO HAPPINESS</p>
+      
+        <div id="countdown">
+            <div class="time-box"><span id="days" class="time-num">00</span><span class="time-label">日 Day</span></div>
+            <div class="time-box"><span id="hours" class="time-num">00</span><span class="time-label">時 Hour</span></div>
+            <div class="time-box"><span id="mins" class="time-num">00</span><span class="time-label">分 Min</span></div>
+            <div class="time-box"><span id="secs" class="time-num">00</span><span class="time-label">秒 Sec</span></div>
+        </div>
+    </section>
+
+    <!-- 5. 接下來的照片藝廊 (第4張開始至第16張) -->
+    <section class="gallery">
+        <div class="gallery-item full-width reveal"><img src="https://i.ibb.co/qLGVjp0w/TOM-9564.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/m5GkpF2r/TOM-9916.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/7xFFdwpw/TOM-9951.jpg"></div>
+        <div class="gallery-item full-width reveal"><img src="https://i.ibb.co/tM401scH/TOM-9669.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/ycjy8gYw/TOM-9662.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/MxQTP6Jf/TOM-9811.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/wFpJDBxH/TOM-9798.jpg"></div>
+        <div class="gallery-item reveal"><img src="https://i.ibb.co/7NSZ6KR8/TOM-9620.jpg"></div>
+
+    </section>
+
+    <!-- 6. 婚禮資訊卡片 (美化左對齊版) -->
+    <section class="info-card reveal">
+        <div class="info-header">
+            <span class="eng-tag" style="margin-bottom:0">Save the Date</span>
+            <h2 style="font-size: 1.8rem;">婚宴資訊</h2>
+        </div>
+        
+        <div class="info-item">
+            <strong>日期 Date</strong>
+            <p>2026年12月12日 (星期六)</p>
+            <p>午宴 11:00 開始入席</p>
+        </div>
+
+        <div class="info-item">
+            <strong>地點 Venue</strong>
+            <p>台南市海南里活動中心</p>
+            <p style="font-size: 0.9rem; color: #888;">709台南市安南區海南里府安路六段103巷153號</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=台南市海南里活動中心" target="_blank" class="map-link">開啟 Google 地圖導航</a>
+        </div>
+    </section>
+
+    <!-- 7. 最後一頁 RSVP -->
+    <section class="rsvp-section reveal">
+        <h2 class="rsvp-title">期待您的見證</h2>
+        <a href="https://www.surveycake.com/s/2kVAA" class="btn-rsvp">填寫出席意願單</a>
+        <br>
+        <p class="quote-eng">"A decade of love, a lifetime to go."</p>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: #bbb; font-size: 0.8rem;">
+        Jyunyi & Cathy 's Wedding 2026
+    </footer>
+
+    <!-- 倒數計時與捲動腳本 -->
+    <script>
+        // 倒數計時邏輯
+        const weddingDate = new Date("Dec 12, 2026 11:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = d < 10 ? "0"+d : d;
+            document.getElementById("hours").innerHTML = h < 10 ? "0"+h : h;
+            document.getElementById("mins").innerHTML = m < 10 ? "0"+m : m;
+            document.getElementById("secs").innerHTML = s < 10 ? "0"+s : s;
+
+            if (diff < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "Happy Wedding Day!";
+            }
+        }, 1000);
+
+        // 捲動顯示邏輯
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
