@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>俊逸 & 筑君 | 婚禮邀請函 Wedding Invitation</title>
     
-    <!-- 優先載入首頁大圖 -->
-    <link rel="preload" as="image" href="https://i.ibb.co/1GTyjdvf/TOM-9534.jpg">
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Great+Vibes&family=Cormorant+Garamond:italic,wght@300;500;600&family=Sacramento&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <!-- 優先載入本地首頁大圖 -->
+    <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&family=Noto+Serif+TC:wght@300;500;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --gold: #b2967d;
             --pink: #d68098;
-            --bright-pink: #ff85a2;
+            --bright-pink: #ffb0c3;
             --gold-deep: #8a6d3b;
             --cream: #fdfbf7;
             --shadow: rgba(0, 0, 0, 0.15);
@@ -23,292 +23,252 @@
         * { cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'><text y='30'>🐻</text></svg>"), auto; }
 
         body {
-            font-family: 'Noto Serif TC', serif;
+            font-family: 'LXGW WenKai TC', serif;
             background-color: var(--cream);
             color: var(--gold-deep);
             line-height: 1.8;
+            margin: 0;
             overflow-x: hidden;
         }
 
-        #particle-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
-
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- 1. 首頁 (Hero) --- */
         .top-text {
             position: absolute;
-            top: 50px;
-            width: 100%;
-            text-align: center;
-            color: var(--bright-pink);
-            font-family: 'Great Vibes', serif;
-            font-size: 2.8rem;
-            letter-spacing: 5px;
-            z-index: 20;
+            top: 50px; width: 100%; text-align: center;
+            color: var(--bright-pink); font-family: 'Pinyon Script', serif;
+            font-size: clamp(1.8rem, 8vw, 2.8rem); letter-spacing: 5px; z-index: 20;
             text-shadow: 0 0 10px rgba(255, 133, 162, 0.6), 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-        .hero-img {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            object-position: center 15%; 
-            z-index: 1;
-            filter: brightness(0.8);
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.4));
-            z-index: 2;
-        }
-        .hero-content { 
-            position: relative; 
-            z-index: 10; 
-            margin-top: 320px; /* 1. 文字位置再下移 (約4行) */
-        }
-        .hero-content h2 { font-size: clamp(2.2rem, 5vw, 3rem); letter-spacing: 12px; font-weight: 700; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
-        .hero-content h1 { font-family: 'Sacramento', serif; font-size: clamp(3rem, 8vw, 4.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+        .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; z-index: 1; filter: brightness(0.8); }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.4)); z-index: 2; pointer-events: none; }
+        .hero-content { position: relative; z-index: 10; margin-top: 25vh; padding: 0 20px; pointer-events: none; }
+        .hero-content h2 { font-family: 'LXGW WenKai TC', serif; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: 12px; font-weight: 700; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .hero-content h1 { font-family: 'LXGW WenKai TC', serif; font-size: clamp(2.8rem, 9vw, 4.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.5); margin: 0; }
 
         /* --- 2. 故事區塊 --- */
-        .section-story { padding: 120px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
-        .eng-tag { font-family: 'Cormorant Garamond', serif; color: var(--pink); font-size: 1.4rem; letter-spacing: 5px; display: block; }
-        .chi-tag { font-size: 1.1rem; color: var(--gold); letter-spacing: 8px; margin-bottom: 20px; display: block; }
+        .section-story { padding: 80px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .eng-tag { font-family: 'Sacramento', cursive; color: var(--pink); font-size: 1.8rem; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+        .section-story p { font-size: 1.1rem; line-height: 2; }
 
-        /* --- 3. 相簿區塊 --- */
+        /* --- 3. 相簿區塊 (網頁與手機共用佈局) --- */
         .gallery-art-wrap {
-            max-width: 1300px; margin: 0 auto; padding: 0 40px;
-            display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px;
+            max-width: 1200px; margin: 0 auto; padding: 20px;
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px;
         }
-        .photo-card { 
-            background: white; padding: 12px; 
-            box-shadow: 0 8px 30px var(--shadow); 
-            transition: all 0.6s ease; 
-            overflow: hidden;
-        }
-        .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; background: #eee; }
-        .photo-card:hover { transform: scale(1.03) rotate(0deg) !important; z-index: 50; box-shadow: 0 15px 45px rgba(0,0,0,0.2); }
+        .photo-card { background: white; padding: 10px; box-shadow: 0 8px 30px var(--shadow); transition: all 0.6s ease; }
+        .photo-card img { width: 100%; display: block; background: #eee; cursor: zoom-in; }
 
-        .p1 { grid-column: 1 / 6; height: 550px; transform: rotate(-2deg); }
-        .p2 { grid-column: 7 / 13; height: 500px; margin-top: 60px; transform: rotate(1deg); }
-        .p3 { grid-column: 2 / 12; height: 600px; margin: 40px 0; transform: rotate(-0.5deg); }
-        .p4 { grid-column: 1 / 5; height: 480px; transform: rotate(2deg); }
-        .p5 { grid-column: 5 / 9; height: 540px; margin-top: -60px; transform: rotate(-1deg); }
-        .p6 { grid-column: 9 / 13; height: 480px; transform: rotate(1deg); }
-        .p7 { grid-column: 1 / 7; height: 500px; margin-top: 20px; transform: rotate(-1deg); }
-        .p8 { grid-column: 7 / 13; height: 500px; margin-top: 80px; transform: rotate(2deg); }
+        /* 所有裝置皆共用此藝術排版 */
+        .p1 { grid-column: 1 / 7; transform: rotate(-1deg); align-self: start; }
+        .p2 { grid-column: 7 / 13; margin-top: 40px; transform: rotate(1deg); }
+        .p3 { grid-column: 2 / 12; margin: 30px 0; }
+        .p4 { grid-column: 1 / 5; transform: rotate(1.5deg); }
+        .p5 { grid-column: 5 / 9; margin-top: -20px; align-self: start; }
+        .p6 { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 10px; transform: rotate(-1deg); aspect-ratio: 3 / 4; }
+        .p6 img { width: 100%; height: calc(50% - 5px); object-fit: cover; }
+        .p7 { grid-column: 1 / 7; align-self: start; }
+        .p8 { grid-column: 7 / 13; margin-top: 50px; transform: rotate(1deg); }
 
-        /* --- 4. 資訊區與藝術照片框 --- */
-        .timer-info-wrap {
-            background-color: white; margin-top: 80px; padding: 100px 5% 60px 5%; text-align: center;
-        }
-        #countdown { display: flex; justify-content: center; gap: 35px; margin-bottom: 50px; }
-        .time-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--gold); line-height: 1; }
-        .time-label { font-size: 0.8rem; color: #999; letter-spacing: 2px; }
+        /* --- 4. 資訊區與按鈕樣式 --- */
+        .timer-info-wrap { background-color: white; padding: 80px 5%; text-align: center; }
+        #countdown { display: flex; justify-content: center; gap: clamp(10px, 4vw, 30px); margin: 30px 0; }
+        .time-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 3.5rem); color: var(--gold); }
+        
+        .info-main-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1100px; margin: 50px auto; }
+        .info-column { flex: 1; min-width: 280px; padding: 30px; border-top: 3px solid var(--gold); background: #fffcfd; text-align: left; }
+        .info-column h2 { font-family: 'Noto Serif TC', serif; font-size: 1.6rem; color: var(--gold-deep); margin-bottom: 15px; }
 
-        .info-divider {
-            width: 150px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
-            margin: 60px auto; position: relative;
-        }
-        .info-divider::after { content: '❦'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: white; padding: 0 15px; color: var(--gold); font-size: 1.2rem; }
-
-        .info-main-container {
-            display: flex; 
-            justify-content: center; 
-            align-items: flex-start;
-            max-width: 1200px; 
-            margin: 0 auto; 
-            gap: 30px; 
-            flex-wrap: wrap; 
-        }
-
-        .info-column {
-            flex: 1; 
-            min-width: 260px; 
-            padding: 30px; 
-            border-left: 3px solid var(--gold);
-            background: #fffcfd; 
-            text-align: left;
-        }
-        .info-column h3 { font-weight: 700; color: var(--gold-deep); font-size: 1.7rem; margin-bottom: 15px; }
-        .info-column p { font-size: 1.2rem; margin-bottom: 8px; }
-
-        .portrait-drawing-wrap {
-            flex: 0 0 240px; 
-            position: relative; padding: 12px;
-            background: white; box-shadow: 8px 8px 25px rgba(0,0,0,0.1);
-            transform: rotate(3deg);
-            border: 1px solid #f0f0f0;
-        }
-        .portrait-drawing-wrap::before { 
-            content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 28px; background: rgba(178, 150, 125, 0.25); z-index: 5;
-        }
-        .portrait-img { width: 100%; height: auto; display: block; }
-        .drawing-label { font-family: 'Sacramento', serif; font-size: 1.8rem; color: var(--pink); margin-top: 10px; display: block; text-align: center; }
+        .portrait-drawing-wrap { flex: 0 0 240px; background: white; padding: 10px; box-shadow: 8px 8px 25px rgba(0,0,0,0.1); transform: rotate(3deg); }
+        .portrait-drawing-wrap img { width: 100%; cursor: zoom-in; }
 
         .rsvp-btn {
-            display: inline-block; padding: 22px 80px; background: var(--gold); color: white;
-            text-decoration: none; border-radius: 50px; margin-top: 70px; font-weight: bold;
-            font-size: 1.1rem; transition: 0.4s; box-shadow: 0 10px 30px rgba(178, 150, 125, 0.3);
+            display: inline-block; padding: 18px 60px; background: var(--gold); color: white;
+            text-decoration: none; border-radius: 50px; margin-top: 40px; font-weight: bold;
+            transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(178, 150, 125, 0.3);
+            cursor: pointer;
         }
-        .rsvp-btn:hover { background: var(--pink); transform: translateY(-5px) scale(1.05); }
-
-        footer { padding: 40px 0; text-align: center; color: #ccc; font-size: 0.75rem; letter-spacing: 4px; }
-
-        @media (max-width: 992px) {
-            .portrait-drawing-wrap { flex: 0 0 200px; }
+        .rsvp-btn:hover {
+            background: var(--pink);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(214, 128, 152, 0.4);
         }
 
+        /* --- 5. 燈箱 --- */
+        .image-viewer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .image-viewer.active { display: flex; opacity: 1; }
+        .image-viewer img { max-width: 90%; max-height: 85vh; border: 3px solid white; border-radius: 4px; transform: scale(0.9); transition: transform 0.3s ease; }
+        .image-viewer.active img { transform: scale(1); }
+        .close-viewer { position: absolute; top: 30px; right: 30px; color: white; font-size: 40px; cursor: pointer; user-select: none; }
+
+        /* --- 手機版 RWD：僅調整大小，不改變排版佈局 --- */
         @media (max-width: 768px) {
+            /* 保持 12 欄 Grid 不動 */
+            .gallery-art-wrap { gap: 8px; padding: 10px; }
+            .photo-card { padding: 6px; } /* 縮小相片白色邊框 */
+            
+            /* 縮小手機版上的間距數值，維持原本的錯位比例 */
+            .p2 { margin-top: 5vw; }
+            .p3 { margin: 4vw 0; }
+            .p8 { margin-top: 6vw; }
+
             .info-main-container { flex-direction: column; align-items: center; }
-            .info-column { width: 95%; border-left: none; border-top: 3px solid var(--gold); }
-            .portrait-drawing-wrap { margin-top: 40px; transform: rotate(0); width: 70%; flex: auto; }
-            .gallery-art-wrap { display: block; padding: 20px; }
-            .photo-card { margin-bottom: 30px !important; height: 450px !important; transform: none !important; margin-top: 0 !important; }
-            .top-text { font-size: 2rem; top: 30px; }
-            .hero-content { margin-top: 200px; }
+            .info-column { width: 90%; margin-bottom: 20px; }
+            .portrait-drawing-wrap { width: 60%; transform: rotate(3deg); margin-top: 20px; }
+            .top-text { top: 30px; }
         }
+
+        #particle-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
     </style>
 </head>
 <body>
 
     <div id="particle-container"></div>
 
-    <!-- 1. 首頁 (Preload 與 Hero 圖片已更新) -->
     <header class="hero">
         <div class="top-text">Decade of Devotion</div>
-        <img src="https://i.ibb.co/1GTyjdvf/TOM-9534.jpg" class="hero-img" alt="俊逸 & 筑君">
+        <img src="img/hero.jpg" class="hero-img" alt="俊逸 & 筑君" fetchpriority="high">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h2>俊逸 & 筑君</h2>
             <h1>Our Wedding Day</h1>
-            <p style="letter-spacing: 10px; font-family: 'Montserrat', sans-serif; font-size: 1.1rem;">2026.12.12</p>
-            <p style="margin-top: 5px; opacity: 0.9; letter-spacing: 2px;">見證我們的十年之約</p>
+            <p style="letter-spacing: 8px; font-family: 'Sacramento', cursive; font-size: 1.5rem; margin-top: 15px;">2026.12.12</p>
+            <p style="margin-top: 15px; font-family: 'LXGW WenKai TC', sans-serif; opacity: 0.9; letter-spacing: 2px; font-size: 1rem;">誠摯邀請您見證我們的幸福</p>
         </div>
     </header>
 
-    <!-- 2. 故事區塊 -->
     <section class="section-story reveal">
-        <span class="eng-tag">OUR JOURNEY</span>
-        <span class="chi-tag">十年相伴．一生承諾</span>
-        <p>這十年的光陰，是我們最珍貴的寶藏。<br>從心動到相守，每一步都有您的見證。<br>誠摯邀請您，與我們分享這份喜悅。</p>
+        <span class="eng-tag">Our Journey</span>
+        <h3 style="letter-spacing: 8px; color: var(--gold); margin-top: 10px;">十年相伴．一生承諾</h3>
+        <p>從那年的怦然心動，到如今的相濡以沫，這段光陰如同一場溫暖的長跑<br>
+        我們相伴著彼此成長，學會愛與被愛，將平凡的日子過成了最珍貴的收藏<br>
+        在這段旅程的重要時刻，希望能與您一同見證這份溫柔的約定</p>
     </section>
 
-    <!-- 3. 相簿 (P1-P8 圖片已更新) -->
+    <!-- 相簿區塊：網頁與手機排版完全一致 -->
     <section class="gallery-art-wrap">
-        <div class="photo-card p1 reveal"><img src="https://i.ibb.co/PzD8WS98/TOM-9537.jpg" loading="lazy"></div>
-        <div class="photo-card p2 reveal"><img src="https://i.ibb.co/NgdS5j86/TOM-9547.jpg" loading="lazy"></div>
-        <div class="photo-card p3 reveal"><img src="https://i.ibb.co/mCT5ZR3n/TOM-9554.jpg" loading="lazy"></div>
-        <div class="photo-card p4 reveal"><img src="https://i.ibb.co/vCZ8dd67/TOM-9956-1.jpg" loading="lazy"></div>
-        <div class="photo-card p5 reveal"><img src="https://i.ibb.co/VW9NM3Dx/TOM-9643.jpg" loading="lazy"></div>
-        <div class="photo-card p6 reveal"><img src="https://i.ibb.co/Gq9RJZG/TOM-9669.jpg" loading="lazy"></div>
-        <div class="photo-card p7 reveal"><img src="https://i.ibb.co/DHDn8zWM/TOM-9766.jpg" loading="lazy"></div>
-        <div class="photo-card p8 reveal"><img src="https://i.ibb.co/WWZTdNYF/TOM-9811.jpg" loading="lazy"></div>
+        <div class="photo-card p1 reveal"><img src="img/p1.jpg" class="zoomable" loading="lazy"></div>
+        <div class="photo-card p2 reveal"><img src="img/p2.jpg" class="zoomable" loading="lazy"></div>
+        <div class="photo-card p3 reveal"><img src="img/p3.jpg" class="zoomable" loading="lazy"></div>
+        <div class="photo-card p4 reveal"><img src="img/p4.jpg" class="zoomable" loading="lazy"></div>
+        <div class="photo-card p5 reveal"><img src="img/p5.jpg" class="zoomable" loading="lazy"></div>
+        <div class="photo-card p6 reveal">
+            <img src="img/p6a.jpg" class="zoomable" loading="lazy">
+            <img src="img/p6b.jpg" class="zoomable" loading="lazy">
+        </div>
+        <div class="photo-card p7 reveal"><img src="img/p7.jpg" class="zoomable" loading="lazy"></div>
+        <div class="photo-card p8 reveal"><img src="img/p8.jpg" class="zoomable" loading="lazy"></div>
     </section>
 
-    <!-- 4. 資訊區與藝術照片框 -->
     <section class="timer-info-wrap">
-        <div class="reveal">
-            <span class="eng-tag">THE COUNTDOWN</span>
-            <span class="chi-tag">婚禮倒數計時</span>
-            <div id="countdown">
-                <div class="time-box"><span id="days" class="time-num">00</span><br><span class="time-label">DAYS</span></div>
-                <div class="time-box"><span id="hours" class="time-num">00</span><br><span class="time-label">HOURS</span></div>
-                <div class="time-box"><span id="mins" class="time-num">00</span><br><span class="time-label">MINS</span></div>
-                <div class="time-box"><span id="secs" class="time-num">00</span><br><span class="time-label">SECS</span></div>
+        <div class="reveal" style="margin-bottom: 50px;">
+             <span class="eng-tag" style="font-size: 2.0rem;">倒數時間</span>
+             <div id="countdown">
+                <div class="time-box"><span id="days" class="time-num">00</span><br><small>日 Day</small></div>
+                <div class="time-box"><span id="hours" class="time-num">00</span><br><small>時 Hour</small></div>
+                <div class="time-box"><span id="mins" class="time-num">00</span><br><small>分 Min</small></div>
+                <div class="time-box"><span id="secs" class="time-num">00</span><br><small>秒 Sec</small></div>
             </div>
         </div>
-
-        <div class="info-divider reveal"></div>
 
         <div class="info-main-container reveal">
-            <!-- 左欄：時間 -->
             <div class="info-column">
-                <h4 style="color: var(--pink); letter-spacing: 2px; font-size: 0.9rem;">WEDDING DATE</h4>
-                <h3>宴客時間</h3>
+                <h2>宴客時間</h2>
                 <p>2026 年 12 月 12 日 (星期六)</p>
-                <p>午宴 11:00 開始入席</p>
+                <p>午宴 11:30 開始入席</p>
             </div>
-
-            <!-- 中欄：地點 -->
             <div class="info-column">
-                <h4 style="color: var(--pink); letter-spacing: 2px; font-size: 0.9rem;">LOCATION</h4>
-                <h3>宴客地點</h3>
+                <h2>宴客地點</h2>
                 <p>台南市海南里活動中心</p>
-                <p style="font-size: 0.9rem; color: #888;">台南市安南區府安路六段103巷153號</p>
-                <a href="https://maps.app.goo.gl/BR3R6d32HtUYqmBT6" target="_blank" style="color: var(--pink); text-decoration: none; border-bottom: 1px solid var(--pink); font-size: 1rem; margin-top: 12px; display: inline-block;">開啟 Google 地圖導航</a>
+                <p style="font-size: 0.9rem; color: #545353;">台南市安南區府安路六段103巷153號</p>
             </div>
-
-            <!-- 右欄：藝術照片框 (圖片已更新) -->
-            <div class="portrait-drawing-wrap">
-                <img src="https://i.ibb.co/G4PWyXMX/TOM-9798.jpg" class="portrait-img" alt="精選照片">
-                <span class="drawing-label">J & C</span>
+            <div class="portrait-drawing-wrap reveal">
+                <img src="img/portrait.jpg" class="zoomable" alt="精選照片" loading="lazy">
+                <span style="font-family: 'Pinyon Script'; font-size: 1.8rem; color: var(--pink); display: block; margin-top: 10px; text-align: center;">Jyunyi & Cathy</span>
             </div>
         </div>
-
         <div class="reveal">
             <a href="https://www.surveycake.com/s/2kVAA" class="rsvp-btn">填寫出席回覆表單</a>
         </div>
     </section>
 
-    <footer>
-        俊逸 & 筑君 婚禮邀請函 © 2026 FOREVER AFTER
+    <div id="imageViewer" class="image-viewer">
+        <span class="close-viewer">&times;</span>
+        <img id="fullImage" src="" alt="滿版圖片">
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #aaa; font-size: 0.75rem; letter-spacing: 3px;">
+        俊逸 & 筑君 婚禮邀請函 © 2026 
     </footer>
 
     <script>
-        // 撒落特效
-        function createParticle() {
-            const container = document.getElementById('particle-container');
-            const particle = document.createElement('div');
-            const isHeart = Math.random() > 0.8;
-            particle.innerHTML = isHeart ? '❤' : '•';
-            particle.style.position = 'absolute';
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.top = '-20px';
-            particle.style.color = 'white';
-            particle.style.opacity = Math.random() * 0.4 + 0.2;
-            particle.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            const duration = Math.random() * 4 + 6;
-            particle.style.transition = `transform ${duration}s linear, top ${duration}s linear`;
-            container.appendChild(particle);
-            setTimeout(() => {
-                particle.style.top = '100vh';
-                particle.style.transform = `translateX(${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg)`;
-            }, 100);
-            setTimeout(() => particle.remove(), duration * 1000);
-        }
-        setInterval(createParticle, 500);
+        // 燈箱功能
+        const viewer = document.getElementById('imageViewer');
+        const fullImg = document.getElementById('fullImage');
+        const closeBtn = document.querySelector('.close-viewer');
+        const zoomableImages = document.querySelectorAll('.zoomable');
+
+        zoomableImages.forEach(img => {
+            img.addEventListener('click', () => {
+                fullImg.src = img.src;
+                viewer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        [closeBtn, viewer].forEach(el => {
+            el.addEventListener('click', (e) => {
+                if (e.target !== fullImg) {
+                    viewer.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
 
         // 倒數計時
-        const weddingDate = new Date("Dec 12, 2026 11:00:00").getTime();
-        setInterval(() => {
+        const weddingDate = new Date("Dec 12, 2026 11:30:00").getTime();
+        function updateTimer() {
             const now = new Date().getTime();
             const diff = weddingDate - now;
-            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById("mins").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById("secs").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-        }, 1000);
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                const m = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                const s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+                if(document.getElementById("days")) document.getElementById("days").innerText = d;
+                if(document.getElementById("hours")) document.getElementById("hours").innerText = h;
+                if(document.getElementById("mins")) document.getElementById("mins").innerText = m;
+                if(document.getElementById("secs")) document.getElementById("secs").innerText = s;
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
 
-        // 捲動顯示
+        // 滾動顯示偵測
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 撒落特效
+        window.addEventListener('load', () => {
+            setInterval(createParticle, 800);
+        });
+        function createParticle() {
+            const container = document.getElementById('particle-container');
+            const p = document.createElement('div');
+            p.innerHTML = Math.random() > 0.8 ? '❤' : '•';
+            p.style.cssText = `position:absolute; left:${Math.random()*100}vw; top:-20px; color:white; opacity:${Math.random()*0.4}; font-size:${Math.random()*15+10}px; transition: transform 6s linear, top 6s linear; pointer-events:none;`;
+            container.appendChild(p);
+            setTimeout(() => { p.style.top = '100vh'; p.style.transform = `translateX(${Math.random()*50-25}px)`; }, 100);
+            setTimeout(() => p.remove(), 6000);
+        }
     </script>
 </body>
 </html>
